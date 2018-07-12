@@ -23,13 +23,17 @@ function Sanddragon(){
 
     // Injection of SandDragon elements
 
-    //targetElement.insertAdjacentElement('afterbegin', newFirstElement)
-    //will allow injection of elements to certain places within the target element
+   
     this.injectElements = function(){
         this.outputMsg('Checking for body element......');
         if(this.checkForElement('body')){
             this.outputMsg('Body element was found.....');
-            let target = document.getElementsByClassName('body')[0];
+            // let target = document.getElementsByClassName('body')[0];
+            let fontStyling     = this.createElement({
+                'type': 'link',
+                'href': 'https://fonts.googleapis.com/css?family=Gugi',
+                'rel': 'stylesheet'
+            },'head');
             let leftCurtain = this.createElement({
                 'type':'div',
                 'id':'leftCurtain',
@@ -44,6 +48,11 @@ function Sanddragon(){
                 'type':'div',
                 'id':'sandDragonIcon'
             },'body');
+            let sandDraonIconImg = this.createElement({
+                'type':'img',
+                'id':'sandDragonIconImg',
+                'src':'http://kronofire.com/projects/sandDragon/imgs/sandDragonIconFinal.png'
+            },'#sandDragonIcon');
             
         }else{
             this.outputMsg('Body element was not found. Terminating');
@@ -64,18 +73,24 @@ function Sanddragon(){
     //     element.setAttribute('class',sand)
     // }
 
+     //targetElement.insertAdjacentElement('afterbegin', newFirstElement)
+    //will allow injection of elements to certain places within the target element
+
     this.createElement = function(attrs,target){
         let element = document.createElement(attrs.type);
         Object.entries(attrs).forEach(function(attr){
             if(attr[0]!='type'){
                 element.setAttribute(attr[0],attr[1]);
             }
-            element.classList.add('.sandDragonCurtain');
+            if(attr[0]==='class'){
+                element.classList.add(attr[1]);
+            }
         });
-        this.outputMsg('Element created: ' + console.dir(element));
+        this.outputMsg('Element created: ' + attrs.type);
         if(this.checkForElement(target)){
             this.outputMsg('Injecting element into ' + target);
-            document.getElementsByTagName(target)[0].appendChild(element);
+            // document.getElementsByTagName(target)[0].appendChild(element);
+            document.querySelector(target).insertAdjacentElement('afterbegin',element);
         }else{
             this.outputMsg('Could not find target using selector: ' + target);
         }

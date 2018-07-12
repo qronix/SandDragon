@@ -2,6 +2,9 @@
     margin: 0;
     padding: 0;
 }
+html{
+    font-family: 'Gugi', cursive;
+}
 body{
     background-color:#00cec9 ;
 }
@@ -72,10 +75,12 @@ body{
     max-width: 200px;
     max-height: 200px;
     z-index: 9999;
+    display: block;
     position: absolute;
     margin: 0 auto;
-    margin-left: 40vw;
-    margin-top:30%;
+    margin-left: calc(50% - 100px);
+    margin-top:20em;
+    border: 1px solid purple;
 }
 
 #sandDragonIconImg{
@@ -110,7 +115,7 @@ body{
         transform: translateX(10000px);
     }
 }
-#leftCurtain{
+/* #leftCurtain{
     animation: sandDragonLeftCurtain;
     animation-delay: 4s;
     animation-duration: 1s;
@@ -121,7 +126,7 @@ body{
     animation-delay: 4s;
     animation-duration: 1s;
     animation-fill-mode: forwards;
-}
+} */
 .sandDragonCurtain{
     position: absolute;
     display: block;
@@ -136,5 +141,21 @@ body{
 
 #rightCurtain{
     margin-left: 50vw;
+}
+
+#sandDragonLoadingOutput{
+    position: absolute;
+    z-index: 9999;
+    width: 40%;
+    height: auto;
+    display: block;
+    margin-left: 30%;
+    text-align: center;
+    border: 1px solid purple;
+    overflow-wrap: break-word;
+    color:#EAB543;
+    letter-spacing: 2px;
+    padding: 0 4px;
+    text-shadow: 0 0 3px rgb(187, 255, 0);
 }
 
